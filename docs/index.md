@@ -1,5 +1,5 @@
 ## Multivariant Analysis of Crash Severity and Number of Injuries in the State of Iowa
-### Using R Programming Language
+### Using R Programming Language / RStudio
 
 ## Abstract
 In this paper, I used multilinear regression to examine the relationship/correlation between the number of injuries and explanatory variables such as driver's age, weather conditions, alcohol test results, manner of crashes, number of vehicles involved in the crash, number of occupants, and day of the week. Also, I used the same explanatory variables to predict crash severity using a multinomial logistic regression model. The result shows that there is a correlation between the explanatory variables and the number of injuries. Also, the multinomial logistic regression model was 7.5% better when compared to a null model. 
@@ -18,39 +18,44 @@ Also, Qin et al. (2010) identified crash-prone locations using quantile regressi
 In addition to this, Jonathan et al. (2016) created a multivariate spatial crash frequency model for identifying sites with a promise based on crash types. The authors designed this model to improve the precision of crash frequency models used to identify areas with promise. They found that models that consider both multivariate and spatial correlation has the best fit. 
 Abdel-Aty et al. also analyze factors that contribute to crashes at intersections. They used tree-based regression methodology to examine the association between particular variables and crash frequency. They used the tree-based regression methodology to cope with multicollinearity between variables, missing observations, and the fact that the actual model form was unknown. They found variations regarding the factors that influence the various types of collision at the intersection. 
 
+## Techniques used in the study and proposed methods
+Firstly, I used chi-square statistics to test the association between crash severity and the independent variables. After this, I created multinomial logistic regression to predict crash severity using independent variables such as driver's age, weather conditions, alcohol test results, manner of crashes, number of vehicles involved in the crash, number of occupants, and day of the week. Multinomial logistic regression was used to predict crash severity as the dependent variable (crash severity) is categorical. Also, multinomial logistic regression was used because it indicates the probabilities of the different possible outcomes of a categorically distributed dependent variable, given a set of independent variables (which may be real-valued, binary-valued, categorical-valued). This model is a classification method that generalizes logistic regression to multiclass problems, thus with more than two possible discrete outcomes (see formula).  
+Also, I created a multilinear regression model to investigate the relationship between the number of injuries resulting from vehicle crashes and variables such as age, day of the week, alcohol test results, weather conditions, number of the vehicle involved in the crash, and number of vehicle occupants. Below is the formula for the multilinear regression model given n observation.
 
-You can use the [editor on GitHub](https://github.com/Gabriel-Appiah/Multivariant_Analysis/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+  yi =  0 +  1xi1 +  2xi2 + ...  pxip +  i for i = 1,2, ... n
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+In creating these models, I converted days of the week and weather to dummy variables. I assigned a 1 to weekday crashes (Monday to Friday) and a zero to weekend crashes (Saturday and Sunday). Also, I gave a 1 to crashes occurring in inclement weather and a zero to those crashes that happened in favorable weather conditions.  I transformed the variables using square root; this was necessary to ensure the data was normally distributed.
 
-### Markdown
+## Results
+This section presents the analysis of the crash data from 2015 to 2020 in the state of Iowa. The first part of this analysis focuses on descriptive analysis. The last portion of this section focuses on analyzing the models' results. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Multilinear Regression
+The table shows the result from the multilinear regression. The p-value (< 2.2e-16) indicates a significant association between the number of injuries and the explanatory variables. The adjusted R2 demonstrates that the independent variables explain 18.7% of the dependent variable's variation (number of injuries).
 
-```markdown
-Syntax highlighted code block
+Table: Results of Multilinear Regression
+![Table_multilinear](Capture.JPG)
 
-# Header 1
-## Header 2
-### Header 3
+### Multinomial Logistic Regression
+The table below shows the result from the multinomial logistic regression model. An important feature of the multinomial logit model is that it estimates k-1 models, where k is the number of levels of the dependent variable. In this instance, by default, R set fatality as the referent group and therefore estimated a model relative to fatality. The following are some of the conclusions that can be drawn from the model. 
 
-- Bulleted
-- List
+1. With a one-point increase in a driver's age, the multinomial log-odds for injury crashes relative to fatal crashes would be expected to decrease by 0.16 units while holding all other variables in the model constant. And that of property damage crashes only would be expected to decrease by 0.20. 
+2. Regarding the weekday, the multinomial logit estimates compare weekend to weekday for injuries crashes and property damage only crashes relative to fatal crashes. The multinomial logit for weekday relative to the weekend is 0.13 unit lower for injury crashes and 0.06 unit lower for property damage only crashes relative to fatal crashes, given all other predictor variables in the model are held constant.
+3. With a one-point increase in the alcohol test result, the multinomial log-odds is 1.07 units higher for injury crashes and 1.167 units higher for property only crashes relative to fatal crashes, holding all other variables in the model constant.
+4. For a one-point increase in the number of vehicle occupants, the multinomial log-odds is 1.78 units higher for injury crashes and 0.98 units higher for property only crashes relative to fatal crashes, given all other predictor variables in the model are held constant. 
+5. With a p-value of 7.208586e-12 for the predictor- driver's age, if I set my alpha level to 0.05, I would reject the null hypothesis. The conclusion is that the regression coefficient for driver's age is statistically different from zero for injury crashes relative to fatal crashes, given all other predictors are in the model.
+6. For bad weather conditions, a p-value of 0.415 indicates that I would fail to reject the null hypothesis; if I set my alpha level to 0.05. The conclusion is that the difference between bad weather and favorable weather conditions is not statistically different for injury crashes relative to fatal crashes given all the model variables.
+7. For a weekday, a p-value of 0.455 indicates that I would fail to reject the null hypothesis; if I set my alpha level to 0.05. The conclusion is that the difference between weekday and weekend is not statistically different for property damage only crashes relative to fatal crashes given all the model variables. 
 
-1. Numbered
-2. List
+![MultinomialLogistic](Capture1.JPG)
 
-**Bold** and _Italic_ and `Code` text
+## Conclusion
+The analysis indicates that there is some relationship between the independent variables and the explanatory variables. The multilinear regression analysis showed that the explanatory variables explain only 18.7% of the independent variable's variations (number of injuries). The residual versus predictor plot indicates that I might be missing a variable that could enhance the multilinear regression model. Therefore, one should be cautious in interpreting the result from the model. When I compared the multinomial regression model to a null model, I can conclude that the model is 7.6% (at  30 degrees of freedom) better than the null model.
 
-[Link](url) and ![Image](src)
-```
+## Regerence
+Abdel-Aty, M., Keller, J., & Brady, P. A. (2005). Analysis of Types of Crashes at Signalized Intersections by Using Complete Crash Data and Tree-Based Regression. Transportation Research Record, 1908(1), 37–45. https://doi.org/10.1177/0361198105190800105
+Jonathan, A.-V., Wu, K.-F. (Ken), & Donnell, E. T. (2016). A multivariate spatial crash frequency model for identifying sites with promise based on crash types. Accident Analysis & Prevention, 87, 8–16. https://doi.org/10.1016/j.aap.2015.11.006
+Qin, X., Ng, M., & Reyes, P. E. (2010). Identifying crash-prone locations with quantile regression. Accident Analysis & Prevention, 42(6), 1531–1537. https://doi.org/10.1016/j.aap.2010.03.009
+Rezapour, M., & Ksaibati, K. (2018). Application of multinomial and ordinal logistic regression to model injury severity of truck crashes, using violation and crash data. Journal of Modern Transportation, 26(4), 268–277. https://doi.org/10.1007/s40534-018-0166-x
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Gabriel-Appiah/Multivariant_Analysis/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
