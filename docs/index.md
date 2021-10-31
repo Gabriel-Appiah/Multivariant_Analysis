@@ -32,6 +32,30 @@ This section presents the analysis of the crash data from 2015 to 2020 in the st
 ### Multilinear Regression
 The table shows the result from the multilinear regression. The p-value (< 2.2e-16) indicates a significant association between the number of injuries and the explanatory variables. The adjusted R2 demonstrates that the independent variables explain 18.7% of the dependent variable's variation (number of injuries).
 
-| |Estimate | Std. Error| t-value | P-value|
-Intercept|5.757e^-01|\(6.839e^-03\)
+Table: Results of Multilinear Regression
+![Table_multilinear](Capture.JPG)
+
+### Multinomial Logistic Regression
+The table below shows the result from the multinomial logistic regression model. An important feature of the multinomial logit model is that it estimates k-1 models, where k is the number of levels of the dependent variable. In this instance, by default, R set fatality as the referent group and therefore estimated a model relative to fatality. The following are some of the conclusions that can be drawn from the model. 
+
+1. With a one-point increase in a driver's age, the multinomial log-odds for injury crashes relative to fatal crashes would be expected to decrease by 0.16 units while holding all other variables in the model constant. And that of property damage crashes only would be expected to decrease by 0.20. 
+2. Regarding the weekday, the multinomial logit estimates compare weekend to weekday for injuries crashes and property damage only crashes relative to fatal crashes. The multinomial logit for weekday relative to the weekend is 0.13 unit lower for injury crashes and 0.06 unit lower for property damage only crashes relative to fatal crashes, given all other predictor variables in the model are held constant.
+3. With a one-point increase in the alcohol test result, the multinomial log-odds is 1.07 units higher for injury crashes and 1.167 units higher for property only crashes relative to fatal crashes, holding all other variables in the model constant.
+4. For a one-point increase in the number of vehicle occupants, the multinomial log-odds is 1.78 units higher for injury crashes and 0.98 units higher for property only crashes relative to fatal crashes, given all other predictor variables in the model are held constant. 
+5. With a p-value of 7.208586e-12 for the predictor- driver's age, if I set my alpha level to 0.05, I would reject the null hypothesis. The conclusion is that the regression coefficient for driver's age is statistically different from zero for injury crashes relative to fatal crashes, given all other predictors are in the model.
+6. For bad weather conditions, a p-value of 0.415 indicates that I would fail to reject the null hypothesis; if I set my alpha level to 0.05. The conclusion is that the difference between bad weather and favorable weather conditions is not statistically different for injury crashes relative to fatal crashes given all the model variables.
+7. For a weekday, a p-value of 0.455 indicates that I would fail to reject the null hypothesis; if I set my alpha level to 0.05. The conclusion is that the difference between weekday and weekend is not statistically different for property damage only crashes relative to fatal crashes given all the model variables. 
+
+![MultinomialLogistic](Capture1.JPG)
+
+## Conclusion
+The analysis indicates that there is some relationship between the independent variables and the explanatory variables. The multilinear regression analysis showed that the explanatory variables explain only 18.7% of the independent variable's variations (number of injuries). The residual versus predictor plot indicates that I might be missing a variable that could enhance the multilinear regression model. Therefore, one should be cautious in interpreting the result from the model. When I compared the multinomial regression model to a null model, I can conclude that the model is 7.6% (at  30 degrees of freedom) better than the null model.
+
+## Regerence
+Abdel-Aty, M., Keller, J., & Brady, P. A. (2005). Analysis of Types of Crashes at Signalized Intersections by Using Complete Crash Data and Tree-Based Regression. Transportation Research Record, 1908(1), 37–45. https://doi.org/10.1177/0361198105190800105
+Jonathan, A.-V., Wu, K.-F. (Ken), & Donnell, E. T. (2016). A multivariate spatial crash frequency model for identifying sites with promise based on crash types. Accident Analysis & Prevention, 87, 8–16. https://doi.org/10.1016/j.aap.2015.11.006
+Qin, X., Ng, M., & Reyes, P. E. (2010). Identifying crash-prone locations with quantile regression. Accident Analysis & Prevention, 42(6), 1531–1537. https://doi.org/10.1016/j.aap.2010.03.009
+Rezapour, M., & Ksaibati, K. (2018). Application of multinomial and ordinal logistic regression to model injury severity of truck crashes, using violation and crash data. Journal of Modern Transportation, 26(4), 268–277. https://doi.org/10.1007/s40534-018-0166-x
+
+
 
