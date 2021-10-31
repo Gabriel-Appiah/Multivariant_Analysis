@@ -18,39 +18,20 @@ Also, Qin et al. (2010) identified crash-prone locations using quantile regressi
 In addition to this, Jonathan et al. (2016) created a multivariate spatial crash frequency model for identifying sites with a promise based on crash types. The authors designed this model to improve the precision of crash frequency models used to identify areas with promise. They found that models that consider both multivariate and spatial correlation has the best fit. 
 Abdel-Aty et al. also analyze factors that contribute to crashes at intersections. They used tree-based regression methodology to examine the association between particular variables and crash frequency. They used the tree-based regression methodology to cope with multicollinearity between variables, missing observations, and the fact that the actual model form was unknown. They found variations regarding the factors that influence the various types of collision at the intersection. 
 
+## Techniques used in the study and proposed methods
+Firstly, I used chi-square statistics to test the association between crash severity and the independent variables. After this, I created multinomial logistic regression to predict crash severity using independent variables such as driver's age, weather conditions, alcohol test results, manner of crashes, number of vehicles involved in the crash, number of occupants, and day of the week. Multinomial logistic regression was used to predict crash severity as the dependent variable (crash severity) is categorical. Also, multinomial logistic regression was used because it indicates the probabilities of the different possible outcomes of a categorically distributed dependent variable, given a set of independent variables (which may be real-valued, binary-valued, categorical-valued). This model is a classification method that generalizes logistic regression to multiclass problems, thus with more than two possible discrete outcomes (see formula).  
+Also, I created a multilinear regression model to investigate the relationship between the number of injuries resulting from vehicle crashes and variables such as age, day of the week, alcohol test results, weather conditions, number of the vehicle involved in the crash, and number of vehicle occupants. Below is the formula for the multilinear regression model given n observation.
 
-You can use the [editor on GitHub](https://github.com/Gabriel-Appiah/Multivariant_Analysis/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+  yi =  0 +  1xi1 +  2xi2 + ...  pxip +  i for i = 1,2, ... n
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+In creating these models, I converted days of the week and weather to dummy variables. I assigned a 1 to weekday crashes (Monday to Friday) and a zero to weekend crashes (Saturday and Sunday). Also, I gave a 1 to crashes occurring in inclement weather and a zero to those crashes that happened in favorable weather conditions.  I transformed the variables using square root; this was necessary to ensure the data was normally distributed.
 
-### Markdown
+## Results
+This section presents the analysis of the crash data from 2015 to 2020 in the state of Iowa. The first part of this analysis focuses on descriptive analysis. The last portion of this section focuses on analyzing the models' results. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Multilinear Regression
+The table shows the result from the multilinear regression. The p-value (< 2.2e-16) indicates a significant association between the number of injuries and the explanatory variables. The adjusted R2 demonstrates that the independent variables explain 18.7% of the dependent variable's variation (number of injuries).
 
-```markdown
-Syntax highlighted code block
+| |Estimate | Std. Error| t-value | P-value|
+Intercept|5.757e^-01|6.839e^-03
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Gabriel-Appiah/Multivariant_Analysis/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
