@@ -1,5 +1,5 @@
 ## Multivariant Analysis of Crash Severity and Number of Injuries in the State of Iowa
-### Using R Programming Language
+### Using R Programming Language / RStudio
 
 ## Abstract
 In this paper, I used multilinear regression to examine the relationship/correlation between the number of injuries and explanatory variables such as driver's age, weather conditions, alcohol test results, manner of crashes, number of vehicles involved in the crash, number of occupants, and day of the week. Also, I used the same explanatory variables to predict crash severity using a multinomial logistic regression model. The result shows that there is a correlation between the explanatory variables and the number of injuries. Also, the multinomial logistic regression model was 7.5% better when compared to a null model. 
@@ -33,5 +33,5 @@ This section presents the analysis of the crash data from 2015 to 2020 in the st
 The table shows the result from the multilinear regression. The p-value (< 2.2e-16) indicates a significant association between the number of injuries and the explanatory variables. The adjusted R2 demonstrates that the independent variables explain 18.7% of the dependent variable's variation (number of injuries).
 
 | |Estimate | Std. Error| t-value | P-value|
-Intercept|5.757e^-01|6.839e^-03
+Intercept|5.757e^-01|\(6.839e^-03\)
 
