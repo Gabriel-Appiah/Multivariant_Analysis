@@ -33,6 +33,7 @@ This section presents the analysis of the crash data from 2015 to 2020 in the st
 The table shows the result from the multilinear regression. The p-value (< 2.2e-16) indicates a significant association between the number of injuries and the explanatory variables. The adjusted R2 demonstrates that the independent variables explain 18.7% of the dependent variable's variation (number of injuries).
 
 Table: Results of Multilinear Regression
+
 ![Table_multilinear](Capture.JPG)
 
 ### Multinomial Logistic Regression
@@ -45,6 +46,8 @@ The table below shows the result from the multinomial logistic regression model.
 5. With a p-value of 7.208586e-12 for the predictor- driver's age, if I set my alpha level to 0.05, I would reject the null hypothesis. The conclusion is that the regression coefficient for driver's age is statistically different from zero for injury crashes relative to fatal crashes, given all other predictors are in the model.
 6. For bad weather conditions, a p-value of 0.415 indicates that I would fail to reject the null hypothesis; if I set my alpha level to 0.05. The conclusion is that the difference between bad weather and favorable weather conditions is not statistically different for injury crashes relative to fatal crashes given all the model variables.
 7. For a weekday, a p-value of 0.455 indicates that I would fail to reject the null hypothesis; if I set my alpha level to 0.05. The conclusion is that the difference between weekday and weekend is not statistically different for property damage only crashes relative to fatal crashes given all the model variables. 
+
+Table: Multinomial Logistic Regression
 
 ![MultinomialLogistic](Capture1.JPG)
 
