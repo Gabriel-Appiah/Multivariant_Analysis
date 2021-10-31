@@ -51,11 +51,14 @@ The table below shows the result from the multinomial logistic regression model.
 ## Conclusion
 The analysis indicates that there is some relationship between the independent variables and the explanatory variables. The multilinear regression analysis showed that the explanatory variables explain only 18.7% of the independent variable's variations (number of injuries). The residual versus predictor plot indicates that I might be missing a variable that could enhance the multilinear regression model. Therefore, one should be cautious in interpreting the result from the model. When I compared the multinomial regression model to a null model, I can conclude that the model is 7.6% (at  30 degrees of freedom) better than the null model.
 
-## Regerence
-Abdel-Aty, M., Keller, J., & Brady, P. A. (2005). Analysis of Types of Crashes at Signalized Intersections by Using Complete Crash Data and Tree-Based Regression. Transportation Research Record, 1908(1), 37–45. https://doi.org/10.1177/0361198105190800105
-Jonathan, A.-V., Wu, K.-F. (Ken), & Donnell, E. T. (2016). A multivariate spatial crash frequency model for identifying sites with promise based on crash types. Accident Analysis & Prevention, 87, 8–16. https://doi.org/10.1016/j.aap.2015.11.006
-Qin, X., Ng, M., & Reyes, P. E. (2010). Identifying crash-prone locations with quantile regression. Accident Analysis & Prevention, 42(6), 1531–1537. https://doi.org/10.1016/j.aap.2010.03.009
-Rezapour, M., & Ksaibati, K. (2018). Application of multinomial and ordinal logistic regression to model injury severity of truck crashes, using violation and crash data. Journal of Modern Transportation, 26(4), 268–277. https://doi.org/10.1007/s40534-018-0166-x
+## Reference
+Abdel-Aty, M., Keller, J., & Brady, P. A. (2005). Analysis of Types of Crashes at Signalized Intersections by Using Complete Crash Data and Tree-Based Regression. Transportation Research Record, 1908(1), 37–45.[Doi](https://doi.org/10.1177/0361198105190800105)
+
+Jonathan, A.-V., Wu, K.-F. (Ken), & Donnell, E. T. (2016). A multivariate spatial crash frequency model for identifying sites with promise based on crash types. Accident Analysis & Prevention, 87, 8–16.[Doi](https://doi.org/10.1016/j.aap.2015.11.006)
+
+Qin, X., Ng, M., & Reyes, P. E. (2010). Identifying crash-prone locations with quantile regression. Accident Analysis & Prevention, 42(6), 1531–1537. [Doi](https://doi.org/10.1016/j.aap.2010.03.009)
+
+Rezapour, M., & Ksaibati, K. (2018). Application of multinomial and ordinal logistic regression to model injury severity of truck crashes, using violation and crash data. Journal of Modern Transportation, 26(4), 268–277. [Doi](https://doi.org/10.1007/s40534-018-0166-x)
 
 
 
