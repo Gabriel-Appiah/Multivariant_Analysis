@@ -10,6 +10,14 @@ install.packages("BaylorEdPsych")
 install.packages("formattable")
 install.packages("moments")
 
+pkgs <- c("tidyverse","skimr","Hmisc","gmodels","lsr","ResourceSelection",
+          "fmsb","BaylorEdPsych","formattable","moments")
+
+new.packages <- pkgs[!(pkgs %in%
+                        installed.packages()[,"Package"])]
+if(length(new.packages))install.packages(new.packages)
+
+
 # call on the various packages
 library(plyr)
 library(tidyverse)
@@ -97,6 +105,9 @@ crashData6a<-data.frame(c(crashData6))
 
 
 crashData6b<-cbind(crashData5,weather=(crashData6a$c.crashData6.))
+
+#Testing for outliers
+summary(crashData6b)
 
 # removing outliers
 crashData6b<-crashData6b[crashData6b$Amount.of.Property.Damage<18000,]
