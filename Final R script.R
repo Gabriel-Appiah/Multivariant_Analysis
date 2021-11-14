@@ -17,6 +17,7 @@ new.packages <- pkgs[!(pkgs %in%
                         installed.packages()[,"Package"])]
 if(length(new.packages))install.packages(new.packages)
 
+sapply(pkgs, library, character.only = T)
 
 # call on the various packages
 library(plyr)
@@ -107,10 +108,11 @@ crashData6a<-data.frame(c(crashData6))
 crashData6b<-cbind(crashData5,weather=(crashData6a$c.crashData6.))
 
 #Testing for outliers
-summary(crashData6b)
+hist(crashData6b$Amount.of.Property.Damage)
 
 # removing outliers
 crashData6b<-crashData6b[crashData6b$Amount.of.Property.Damage<18000,]
+hist(crashData6b$Amount.of.Property.Damage)
 
 #crashData6b<-crashData6b[crashData6b$Number.of.Injuries>0,]
 
@@ -170,8 +172,8 @@ propD<-as.data.frame(propD)
 
 plotData<-cbind(nInjuries1,propD)
 
-plotData$log<-log(plotData$nInjuries1)
-plotData$lognv<-log(plotData$propD)
+plotData$log<-log(plotData$nInjuries1+1)
+plotData$lognv<-log(plotData$propD+1)
 
 
 ggplot(data=plotData, mapping =aes(x=lognv,y=log))+
@@ -187,6 +189,7 @@ ggplot(data=plotData, mapping =aes(x=lognv,y=log))+
 #Preparing variables for test of association, multi-linear and multinomial logistic regression
 assData<-cbind(severity1,age=driverAge1$D_age)
 assData$D_age <- cut(assData$age, breaks=seq(0,110,20))
+
 
 weather<-na.omit(crashData6b$weather)
 weather<-as.data.frame(weather)
@@ -206,6 +209,8 @@ dataVariables<-cbind(assData,weather,weekday,nVehicle,alcoResult,nVehicle1,nInju
 dataVariables$nVehicl3<- cut(dataVariables$nVehicle1, breaks=seq(0,16,4))
 dataVariables$nVehicl2<- cut(dataVariables$nVehicle, breaks=seq(0,99,18))
 plotData$group <- cut(plotData$lognv, breaks=seq(0,15,5))
+
+
 
 #testing association between crash Severity and Driver's age
 CrossTable(assData$severity, assData$D_age,
@@ -246,6 +251,11 @@ CrossTable(assData$severity, plotData$group,
 #transforming the data used for multi-linear regression
 skewness(dataVariables$nInjuries1,na.rm = TRUE)
 
+View(dataVariables)
+
+hist(dataVariables$nInjuries1)
+
+View(dataVariables)
 dataVariables1<-dataVariables[dataVariables$nInjuries1>0,]
 
 
@@ -256,8 +266,8 @@ dataVariables1$nVeh1<-sqrt(dataVariables1$nVehicle1)
 dataVariables1$nInjuries1log<-sqrt(dataVariables1$nInjuries1)
 dataVariables1$Alco<-sqrt(dataVariables1$alcoResult)
 
-
-
+View(dataVariables1)
+hist(dataVariables1$nInjuries1)
 #Run multi-linear regression
 fit<-lm(nInjuries1log~lognAge10+weekday+weather+Prop10+nVeh+nVeh1+Alco, data=dataVariables1)
 summary(fit)
